@@ -1,5 +1,5 @@
 # hxE2
-A lean Entity System.
+An entity system that is evolved from hxE. This does not deprecate hxE, but rather offers a different approach to entity systems that is more in line with my own views on how one should be implemented.
 
 # Install
 `haxelib git hxE2 https://github.com/PDeveloper/hxE2.git`
