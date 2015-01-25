@@ -13,21 +13,6 @@ using Lambda;
  * @author PDeveloper
  */
 
-interface IView
-{
-	
-	private var includeFlag:BitFlag;
-	private var excludeFlag:BitFlag;
-	
-	@:allow(hxE2.container.SlaveContainer)
-	@:allow(hxE2.EntityWorld)
-	private function push(e:Entity):Void;
-	
-	public function update():Void;
-	public function dispose():Void;
-	
-}
-
 class View implements IView
 {
 	
@@ -47,7 +32,7 @@ class View implements IView
 	private var _removedEntities:FastStorage<Entity>;
 	
 	@:access(hxE2.EntityWorld.initializeView)
-	public function new(world:EntityWorld, exclude:Array<Class<Component>> = null) 
+	public function new(world:EntityWorld, exclude:Array<Class<Component>> = null):Void
 	{
 		_exclude = (exclude != null) ? exclude : new Array<Class<Component>>();
 		
@@ -174,7 +159,7 @@ class View1 <T:Component> extends View
 	private var slot1:ComponentType<T>;
 	private var container1:SlaveContainer<T>;
 	
-	public function new(world:EntityWorld, c1:Class<T>, exclude:Array<Class<Component>> = null) 
+	public function new(world:EntityWorld, c1:Class<T>, exclude:Array<Class<Component>> = null):Void
 	{
 		slot1 = cast world.components.getType(c1);
 		container1 = cast world.components.getContainer(slot1).getSlaveContainer(this);
@@ -215,7 +200,7 @@ class View2 <T:Component, U:Component> extends View1<T>
 	private var slot2:ComponentType<U>;
 	private var container2:SlaveContainer<U>;
 	
-	public function new(world:EntityWorld, c1:Class<T>, c2:Class<U>, exclude:Array<Class<Component>> = null) 
+	public function new(world:EntityWorld, c1:Class<T>, c2:Class<U>, exclude:Array<Class<Component>> = null):Void
 	{
 		slot2 = cast world.components.getType(c2);
 		container2 = cast world.components.getContainer(slot2).getSlaveContainer(this);
@@ -258,7 +243,7 @@ class View3<T:Component, U:Component, V:Component> extends View2<T, U>
 	private var slot3:ComponentType<V>;
 	private var container3:SlaveContainer<V>;
 	
-	public function new(world:EntityWorld, c1:Class<T>, c2:Class<U>, c3:Class<V>, exclude:Array<Class<Component>> = null) 
+	public function new(world:EntityWorld, c1:Class<T>, c2:Class<U>, c3:Class<V>, exclude:Array<Class<Component>> = null):Void
 	{
 		slot3 = cast world.components.getType(c3);
 		container3 = cast world.components.getContainer(slot3).getSlaveContainer(this);
@@ -301,7 +286,7 @@ class View4<T:Component, U:Component, V:Component, W:Component> extends View3<T,
 	private var slot4:ComponentType<W>;
 	private var container4:SlaveContainer<W>;
 	
-	public function new(world:EntityWorld, c1:Class<T>, c2:Class<U>, c3:Class<V>, c4:Class<W>, exclude:Array<Class<Component>> = null) 
+	public function new(world:EntityWorld, c1:Class<T>, c2:Class<U>, c3:Class<V>, c4:Class<W>, exclude:Array<Class<Component>> = null):Void
 	{
 		slot4 = cast world.components.getType(c4);
 		container4 = cast world.components.getContainer(slot4).getSlaveContainer(this);
@@ -344,7 +329,7 @@ class View5<T:Component, U:Component, V:Component, W:Component, X:Component> ext
 	private var slot5:ComponentType<X>;
 	private var container5:SlaveContainer<X>;
 	
-	public function new(world:EntityWorld, c1:Class<T>, c2:Class<U>, c3:Class<V>, c4:Class<W>, c5:Class<X>, exclude:Array<Class<Component>> = null) 
+	public function new(world:EntityWorld, c1:Class<T>, c2:Class<U>, c3:Class<V>, c4:Class<W>, c5:Class<X>, exclude:Array<Class<Component>> = null):Void
 	{
 		slot5 = cast world.components.getType(c5);
 		container5 = cast world.components.getContainer(slot5).getSlaveContainer(this);

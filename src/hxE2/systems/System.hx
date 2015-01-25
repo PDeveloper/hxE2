@@ -1,4 +1,4 @@
-package hxE2;
+package hxE2.systems;
 
 using Lambda;
 
@@ -7,13 +7,10 @@ using Lambda;
  * @author PDeveloper
  */
 
-class EntitySystem
+class System
 {
 	
-	public var id:Int;
-	
 	private var _world:EntityWorld;
-	
 	private var isPassive:Bool;
 	
 	public function new() 
@@ -22,20 +19,20 @@ class EntitySystem
 	}
 	
 	@:final
-	@:allow( hxE2.EntityWorld )
-	private function __onSystemAdded( world:EntityWorld ):Void
+	@:allow(hxE2.systems.SystemGroup)
+	private function __onSystemAdded(world:EntityWorld):Void
 	{
 		_world = world;
-		onSystemAdded( world );
+		onSystemAdded(world);
 	}
 	
-	public function onSystemAdded( world:EntityWorld ):Void
+	public function onSystemAdded(world:EntityWorld):Void
 	{
 		
 	}
 	
 	@:final
-	@:allow( hxE2.EntityWorld )
+	@:allow(hxE2.systems.SystemGroup)
 	private function __onSystemRemoved():Void
 	{
 		onSystemRemoved();
@@ -48,9 +45,9 @@ class EntitySystem
 	}
 	
 	@final
-	public function __process( timeStep:Float ):Void
+	public function __process(delta:Float):Void
 	{
-		process( timeStep );
+		process(delta);
 	}
 	
 	/**
@@ -58,19 +55,19 @@ class EntitySystem
 	 * @param	entitiesToProcess
 	 */
 	
-	public function process( timeStep:Float ):Void
+	public function process(delta:Float):Void
 	{
 		
 	}
 	
 	@final
-	public function canProcess( timeStep:Float ):Bool
+	public function canProcess(delta:Float):Bool
 	{
-		return !isPassive && checkProcessing( timeStep );
+		return !isPassive && checkProcessing(delta);
 	}
 	
 	@final
-	public function setPassive( isPassive:Bool):Void
+	public function setPassive(isPassive:Bool):Void
 	{
 		this.isPassive = isPassive;
 	}
@@ -86,7 +83,7 @@ class EntitySystem
 	 * @return
 	 */
 	
-	public function checkProcessing( timeStep:Float ):Bool
+	public function checkProcessing(delta:Float):Bool
 	{
 		return true;
 	}

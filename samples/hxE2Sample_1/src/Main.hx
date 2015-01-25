@@ -13,7 +13,7 @@ import hxE2.EntityWorld;
 import hxE2.View;
 
 /**
- * ...
+ * NOTE: This sample was used for unit testing and is not meant to represent best practices in ANY way!!!
  * @author PDeveloper
  */
 

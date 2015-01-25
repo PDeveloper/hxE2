@@ -1,17 +1,17 @@
 package hxE2.systems;
-import hxE2.EntitySystem;
+import hxE2.systems.System;
 
 /**
  * Will process entities in time intervals!
  * @author PDeveloper
  */
 
-class IntervalSystem extends EntitySystem
+class IntervalSystem extends System
 {
 	
 	private var accumulatedTime:Float;
 	private var interval:Float;
-
+	
 	public function new(interval:Float) 
 	{
 		super();
@@ -20,9 +20,9 @@ class IntervalSystem extends EntitySystem
 		this.accumulatedTime = 0.0;
 	}
 	
-	override public function checkProcessing(timeStep:Float):Bool 
+	override public function checkProcessing(delta:Float):Bool 
 	{
-		accumulatedTime += timeStep;
+		accumulatedTime += delta;
 		
 		if (accumulatedTime > interval)
 		{

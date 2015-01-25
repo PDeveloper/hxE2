@@ -85,7 +85,6 @@ class ComponentManager
 	public inline function hasComponentType(e:Entity, t:IComponentType):Bool
 	{
 		var components = containers[t.id];
-		
 		return components.has(e);
 	}
 	
@@ -99,7 +98,6 @@ class ComponentManager
 	public inline function getComponentByClass(e:Entity, componentClass:Class<Component>):Component
 	{
 		var t = getType(componentClass);
-		
 		return getComponentByType(e, t);
 	}
 	

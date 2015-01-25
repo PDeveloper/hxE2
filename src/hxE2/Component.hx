@@ -1,5 +1,4 @@
 package hxE2;
-import hxE2.bits.BitFlag;
 
 /**
  * ...
