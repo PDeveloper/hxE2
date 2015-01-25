@@ -32,4 +32,6 @@ function update(e:Entity):Void
   position.x += 5.0;
   view.set1(e, position); // update component
 }
+
+view.dispose(); // dispose views when they are no longer relevant / don't need to receive updates
 ```
