@@ -1,6 +1,9 @@
 # hxE2
 A lean Entity System.
 
+# Install
+`haxelib git hxE2 https://github.com/PDeveloper/hxE2.git`
+
 # Usage
 ```haxe
 var world = new EntityWorld();
