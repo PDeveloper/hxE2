@@ -226,17 +226,19 @@ class Main
 	private function drawCircle(shape:Shape, radius:Float, colour:Int, alpha:Float):Void
 	{
 		var g = shape.graphics;
-		g.clear();
+		
 		g.beginFill(colour, alpha);
 		g.drawCircle(0.0, 0.0, radius);
+		g.endFill();
 	}
 	
 	private function drawRect(shape:Shape, width:Float, height:Float, colour:Int, alpha:Float):Void
 	{
 		var g = shape.graphics;
-		g.clear();
+		
 		g.beginFill(colour, alpha);
-		g.drawRect(-width * 0.5, -height * 0.5, width, height);
+		g.drawRect( -width * 0.5, -height * 0.5, width, height);
+		g.endFill();
 	}
 	
 	private function createRandomEntity():Void
@@ -249,18 +251,21 @@ class Main
 		var velocity = new VelocityComponent(Math.random() * 128.0 - 64.0, Math.random() * 128.0 - 64.0);
 		e.setComponent(velocity);
 		
+		var radius = 6.0 + Math.random() * 9.0;
 		var choice = Math.random();
 		if (choice < 0.55)
 		{
-			var circle = new CircleComponent(6.0 + Math.random() * 16.0);
+			var circle = new CircleComponent(radius);
 			e.setComponent(circle);
 		}
 		else if (choice > 0.45)
 		{
-			var rect = new RectComponent(6.0 + Math.random() * 16.0, 6.0 + Math.random() * 16.0);
+			var rect = new RectComponent(radius * 1.8, radius * 2.1 + Math.random() * 8.0);
 			e.setComponent(rect);
 		}
-		var colour = new ColourComponent(Std.int(Math.random() * 0xFFFFFF));
+		var alpha = 1.0;
+		if (choice > 0.45 && choice < 0.55) alpha = 0.5;
+		var colour = new ColourComponent(Std.int(Math.random() * 0xFFFFFF), alpha);
 		e.setComponent(colour);
 	}
 	

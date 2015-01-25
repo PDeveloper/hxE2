@@ -1,7 +1,7 @@
 package hxE2.container;
 import hxE2.core.ComponentType;
 import hxE2.Entity;
-import hxE2.View.IView;
+import hxE2.IView;
 
 /**
  * ...

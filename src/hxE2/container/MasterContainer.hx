@@ -3,7 +3,7 @@ import hxE2.Component;
 import hxE2.core.ComponentManager;
 import hxE2.core.ComponentType;
 import hxE2.Entity;
-import hxE2.View.IView;
+import hxE2.IView;
 
 using Lambda;
 
