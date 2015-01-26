@@ -19,9 +19,11 @@ while (true)
 {
   view.update();
   
-  for (e in view.removedEntities) remove(e);
-  for (e in view.addedEntities) add(e);
-  for (e in view.updatedEntities) update(e);
+  for (e in view.removedEntities) remove(e); // do something with removed entities if needed
+  for (e in view.addedEntities) add(e); // do something with added entities if needed
+  for (e in view.updatedEntities) update(e); // do something with only updated entities if needed
+  
+  for (e in view.entities) func(e); // do something with all entities in the view if needed
 }
 
 function update(e:Entity):Void
