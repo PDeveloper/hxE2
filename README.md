@@ -1,5 +1,6 @@
 # hxE2
 An entity system that is evolved from hxE. This does not deprecate hxE, but rather offers a different approach to entity systems that is more in line with my own views on how one should be implemented.
+[Short post about hxE2, which also compares some differences to hxE.](http://psvilans.wrongbananas.net/hxe2-entity-systems/)
 
 # Install
 `haxelib git hxE2 https://github.com/PDeveloper/hxE2.git`
