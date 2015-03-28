@@ -41,7 +41,7 @@ class SystemGroup
 	
 	public function add(system:System):Void
 	{
-		if (!systems.has(system)
+		if (!systems.has(system))
 		{
 			systems.push(system);
 			system.__onSystemAdded(world);

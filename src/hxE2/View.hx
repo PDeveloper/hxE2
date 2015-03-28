@@ -31,6 +31,8 @@ class View implements IView
 	private var _updatedEntities:FastStorage<Entity>;
 	private var _removedEntities:FastStorage<Entity>;
 	
+	private var toRemove:Array<Entity>;
+	
 	@:access(hxE2.EntityWorld.initializeView)
 	public function new(world:EntityWorld, exclude:Array<Class<Component>> = null):Void
 	{
@@ -48,6 +50,8 @@ class View implements IView
 		_addedEntities = new FastStorage<Entity>();
 		_updatedEntities = new FastStorage<Entity>();
 		_removedEntities = new FastStorage<Entity>();
+		
+		toRemove = new Array<Entity>();
 		
 		for (c in _exclude) excludeFlag.set(world.components.getType(c).id + 1, 1);
 		excludeFlag.flip();
@@ -71,12 +75,26 @@ class View implements IView
 	public function update():Void
 	{
 		clear();
+		for (e in toRemove)
+		{
+			_addedEntities.remove(e);
+			_updatedEntities.remove(e);
+			_removedEntities.remove(e);
+			
+			_entities.remove(e);
+			_entityFlags.set(e.id, false);
+		}
 		for (e in _updates)
 		{
 			updateEntity(e);
 			_updateFlags.set(e.id, false);
 		}
 		_updates.clear();
+	}
+	
+	private inline function removeEntity(e:Entity):Void
+	{
+		toRemove.push(e);
 	}
 	
 	private inline function updateEntity(e:Entity):Void
@@ -108,7 +126,7 @@ class View implements IView
 	
 	public inline function has(e:Entity):Bool
 	{
-		return _entities.has(e);
+		return _entityFlags.at(e.id);
 	}
 	
 	public function dispose():Void
@@ -177,6 +195,12 @@ class View1 <T:Component> extends View
 		container1.set(e, c);
 	}
 	
+	public function remove1(e:Entity):Void
+	{
+		container1.remove(e);
+		removeEntity(e);
+	}
+	
 	public function get1(e:Entity):T
 	{
 		return container1.get(e);
@@ -217,6 +241,12 @@ class View2 <T:Component, U:Component> extends View1<T>
 	public function set2(e:Entity, c:U):Void
 	{
 		container2.set(e, c);
+	}
+	
+	public function remove2(e:Entity):Void
+	{
+		container2.remove(e);
+		removeEntity(e);
 	}
 	
 	public function get2(e:Entity):U
@@ -262,6 +292,12 @@ class View3<T:Component, U:Component, V:Component> extends View2<T, U>
 		container3.set(e, c);
 	}
 	
+	public function remove3(e:Entity):Void
+	{
+		container3.remove(e);
+		removeEntity(e);
+	}
+	
 	public function get3(e:Entity):V
 	{
 		return container3.get(e);
@@ -305,6 +341,12 @@ class View4<T:Component, U:Component, V:Component, W:Component> extends View3<T,
 		container4.set(e, c);
 	}
 	
+	public function remove4(e:Entity):Void
+	{
+		container4.remove(e);
+		removeEntity(e);
+	}
+	
 	public function get4(e:Entity):W
 	{
 		return container4.get(e);
@@ -346,6 +388,12 @@ class View5<T:Component, U:Component, V:Component, W:Component, X:Component> ext
 	public function set5(e:Entity, c:X):Void
 	{
 		container5.set(e, c);
+	}
+	
+	public function remove5(e:Entity):Void
+	{
+		container5.remove(e);
+		removeEntity(e);
 	}
 	
 	public function get5(e:Entity):X

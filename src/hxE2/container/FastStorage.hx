@@ -75,7 +75,13 @@ class FastStorage<T>
 	
 	public inline function remove(value:T):Bool
 	{
-		return _container.remove(value);
+		var i = _container.indexOf(value);
+		if (i >= 0)
+		{
+			_container[i] = _container[_length--];
+			return true;
+		}
+		return false;
 	}
 	
 	public inline function clear():Void

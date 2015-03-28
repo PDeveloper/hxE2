@@ -3,10 +3,9 @@
   "url": "https://github.com/PDeveloper/hxE2",
   "license": "MIT",
   "tags": ["entity","system","cross"],
-  "description": "A Haxe Entity System/\nRead up on Entity systems: http://t-machine.org/index.php/2007/09/03/entity-systems-are-the-future-of-mmog-development-part-1/",
-  "version": "0.0.1",
-  "releasenote": "Initial Haxelib2 release",
+  "description": "A modular entity system.",
+  "version": "0.0.2",
+  "releasenote": "Alpha.0.0.2",
   "contributors": ["PSvils"],
   "classPath" : "src"
-  }
 }

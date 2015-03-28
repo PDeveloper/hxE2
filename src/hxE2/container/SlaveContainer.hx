@@ -53,7 +53,7 @@ class SlaveContainer<T:Component> implements IContainer
 	
 	public inline function remove(e:Entity):Void 
 	{
-		master.remove(e);
+		master.slaveSet(this, e, null);
 	}
 	
 	public inline function setComponent(e:Entity, c:Component):Void 
